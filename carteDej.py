@@ -132,7 +132,7 @@ if choix_resto != "Aucun":
                 ratings = {}
             ratings[user_name.strip()] = int(note_user)
             df.at[idx, "ratings"] = json.dumps(ratings, ensure_ascii=False)
-            df.to_csv(DATA_FILE, index=False)
+            save_csv_github(API_URL_CSV, df, message="Ajout/modification de restaurant")
             st.sidebar.success("Note enregistrée !")
             st.rerun()
 
@@ -360,5 +360,6 @@ if map_output and map_output.get("last_clicked"):
             save_csv_github(API_URL_CSV, df, message="Ajout/modification de restaurant")
             st.sidebar.success(f"{nom} ajouté !")
             st.rerun()
+
 
 
