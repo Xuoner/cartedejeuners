@@ -8,21 +8,60 @@ import uuid
 import json
 from html import escape
 
+import requests
+import base64
+import pandas as pd
+from io import StringIO
+
+GITHUB_TOKEN = st.secrets["GITHUB_TOKEN"]
+REPO = "Xuoner/cartedejeuners"  # change to your repo
+CSV_PATH = "restaurants.csv"
+API_URL_CSV = f"https://api.github.com/repos/cartedejeuners/contents/restaurants.csv"
+HEADERS = {"Authorization": f"token {GITHUB_TOKEN}"}
+
 st.set_page_config(page_title="🍽️ Carte des Restos", layout="wide")
 
-DATA_FILE = "restaurants.csv"
+
 
 # -----------------------------
 # Chargement / initialisation du CSV
 # -----------------------------
-try:
-    df = pd.read_csv(DATA_FILE)
-except FileNotFoundError:
-    df = pd.DataFrame(columns=[
-        "id", "nom", "lat", "lon", "type", "ratings"
-    ])
-    # ratings stockera un JSON (string) : { "Alice": 5, "Bob": 4 }
-    df.to_csv(DATA_FILE, index=False)
+# -----------------------------
+# Load CSV from GitHub
+# -----------------------------
+def load_csv_github(api_url):
+    resp = requests.get(api_url, headers=HEADERS)
+    if resp.status_code == 200:
+        content = resp.json()["content"]
+        decoded = base64.b64decode(content).decode("utf-8")
+        df = pd.read_csv(StringIO(decoded))
+        return df
+    else:
+        st.warning("Impossible de charger le CSV depuis GitHub, création d'un CSV vide.")
+        return pd.DataFrame(columns=["id", "nom", "lat", "lon", "type", "ratings"])
+
+# -----------------------------
+# Save CSV to GitHub
+# -----------------------------
+def save_csv_github(api_url, df, message="Update CSV"):
+    # get current sha
+    resp = requests.get(api_url, headers=HEADERS)
+    sha = resp.json()["sha"] if resp.status_code == 200 else None
+
+    csv_str = df.to_csv(index=False, encoding="utf-8")
+    content_base64 = base64.b64encode(csv_str.encode("utf-8")).decode("utf-8")
+    payload = {
+        "message": message,
+        "content": content_base64,
+        "sha": sha,
+    }
+    put_resp = requests.put(api_url, headers=HEADERS, json=payload)
+    if put_resp.status_code in [200, 201]:
+        st.success("✅ CSV mis à jour sur GitHub")
+    else:
+        st.error(f"Erreur GitHub: {put_resp.status_code} {put_resp.text}")
+
+df = load_csv_github(API_URL_CSV)
 
 # S'assurer que les colonnes existent
 for col in ["id", "nom", "lat", "lon", "type", "ratings"]:
@@ -318,6 +357,7 @@ if map_output and map_output.get("last_clicked"):
                 "ratings": json.dumps(ratings_dict, ensure_ascii=False)
             }
             df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
-            df.to_csv(DATA_FILE, index=False)
+            save_csv_github(API_URL_CSV, df, message="Ajout/modification de restaurant")
             st.sidebar.success(f"{nom} ajouté !")
             st.rerun()
+
