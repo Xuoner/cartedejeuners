@@ -16,7 +16,7 @@ from io import StringIO
 GITHUB_TOKEN = st.secrets["GITHUB_TOKEN"]
 REPO = "Xuoner/cartedejeuners"  # change to your repo
 CSV_PATH = "restaurants.csv"
-API_URL_CSV = f"https://api.github.com/repos/cartedejeuners/contents/restaurants.csv"
+API_URL_CSV = f"https://api.github.com/repos/{REPO}/contents/restaurants.csv"
 HEADERS = {"Authorization": f"token {GITHUB_TOKEN}"}
 
 st.set_page_config(page_title="🍽️ Carte des Restos", layout="wide")
@@ -360,4 +360,5 @@ if map_output and map_output.get("last_clicked"):
             save_csv_github(API_URL_CSV, df, message="Ajout/modification de restaurant")
             st.sidebar.success(f"{nom} ajouté !")
             st.rerun()
+
 
