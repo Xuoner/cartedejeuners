@@ -79,10 +79,22 @@ df = df.fillna("")
 st.markdown(
     """
     <style>
-    /* Reduce the top spacing of the whole page */
-    main > div:first-child {
-        padding-top: 0px !important;
-        margin-top: 0px !important;
+    /* Remove padding/margin above main content */
+    .appview-container .main .block-container {
+        padding-top: 0rem !important;
+        margin-top: 0rem !important;
+    }
+
+    /* Remove extra spacing from title */
+    h1 {
+        margin-top: 0.2rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    /* Optional: remove spacing around the map */
+    .stFrame {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
     </style>
     """,
@@ -413,6 +425,7 @@ if map_output and map_output.get("last_clicked"):
             save_csv_github(API_URL_CSV, df, message=f"Ajout de restaurant {nom.strip()}")
             st.sidebar.success(f"{nom} ajouté !")
             st.rerun()
+
 
 
 
