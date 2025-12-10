@@ -76,6 +76,23 @@ for col in ["id", "nom", "lat", "lon", "type", "ratings", "comments"]:
 # Remplacer NaN par ""
 df = df.fillna("")
 
+st.markdown(
+    """
+    <style>
+    /* Reduce top padding of main content */
+    .css-18e3th9 {
+        padding-top: 0rem;
+    }
+    /* Optional: reduce bottom padding too */
+    .css-18e3th9, .css-1d391kg {
+        padding-bottom: 0rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 st.title("🍽️ Carte des Déjeuners")
 
 # -----------------------------
@@ -398,6 +415,7 @@ if map_output and map_output.get("last_clicked"):
             save_csv_github(API_URL_CSV, df, message=f"Ajout de restaurant {nom.strip()}")
             st.sidebar.success(f"{nom} ajouté !")
             st.rerun()
+
 
 
 
