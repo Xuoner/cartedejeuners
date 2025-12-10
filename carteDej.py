@@ -291,10 +291,8 @@ for _, row in df_affiche.iterrows():
     else:
         name_color = "red"
 
-    if avg is None:
-        star_label = ""
-    else:
-        star_label = f"{fmt_note(avg)}/5 {render_stars(avg)}"
+    star_label = f"{avg_text}/5 <span style='color:#f4c542;'>★</span>" if avg is not None else ""
+
 
 
     icon_html = f"""
@@ -369,6 +367,7 @@ if map_output and map_output.get("last_clicked"):
             save_csv_github(API_URL_CSV, df, message=f"Ajout de restaurant {nom.strip()}")
             st.sidebar.success(f"{nom} ajouté !")
             st.rerun()
+
 
 
 
