@@ -6,6 +6,7 @@ from streamlit_folium import st_folium
 import uuid
 import json
 from html import escape
+import math
 
 import requests
 import base64
@@ -209,11 +210,21 @@ def get_emoji(type_cuisine: str) -> str:
     if "fast food" in t or "kfc" in t or "mcdo" in t: return "🍟"
     return "🍽️"
 
-def stars_html(n: int) -> str:
-    n = max(1, min(5, int(n)))
-    full = "★" * n
-    empty = "☆" * (5 - n)
-    return f"<span style='color:#f4c542;font-size:14px'>{full}{empty}</span>"
+def fmt_note(note):
+    if note is None:
+        return ""
+    if float(note).is_integer():
+        return str(int(note))
+    return f"{note:.1f}"
+
+def render_stars(note):
+    if note is None:
+        return ""
+    full = int(note)
+    half = 1 if note - full >= 0.5 else 0
+    empty = 5 - full - half
+    stars = "★" * full + "⯨" * half + "☆" * empty
+    return f"<span style='font-size:18px;color:#f2b01e;'>{stars}</span>"
 
 # Construire les marqueurs
 for _, row in df_affiche.iterrows():
@@ -246,18 +257,25 @@ for _, row in df_affiche.iterrows():
 
     if ratings:
         # avg_text: single rating vs average for 2+
-        if len(ratings) >= 2:
-            avg_text = f"{int(avg)}" if avg.is_integer() else f"{avg:.1f}"
+        # Compute average and formatted text
+        if len(ratings) == 1:
+            only = list(ratings.values())[0]
+            avg_text = fmt_note(only)
+            avg_stars = render_stars(only)
         else:
-            avg_text = f"{list(ratings.values())[0]}"
-        popup_html += f"<b>Moyenne :</b> {avg_text} / 5 {stars_html(round(avg))}<br>"
+            avg_text = fmt_note(avg)
+            avg_stars = render_stars(avg)
+    
+        popup_html += f"<b>Moyenne :</b> {avg_text} / 5 {avg_stars}<br>"
+    
         popup_html += "<b>Notes (par personne) :</b><br><ul style='margin:6px 0 0 14px;padding:0;'>"
         for user, val in sorted(ratings.items(), key=lambda x: x[0].lower()):
             comment_preview = ""
             if user in comments and comments[user].strip():
                 comment_preview = f" — <i>{escape(comments[user])}</i>"
-            popup_html += f"<li>{escape(user)} — {int(val)} / 5 {stars_html(int(val))}{comment_preview}</li>"
+            popup_html += f"<li>{escape(user)} — {fmt_note(val)} / 5 {render_stars(val)}{comment_preview}</li>"
         popup_html += "</ul>"
+
     else:
         popup_html += "<i>Aucune note pour le moment</i><br>"
     popup_html += "</div>"
@@ -347,6 +365,7 @@ if map_output and map_output.get("last_clicked"):
             save_csv_github(API_URL_CSV, df, message=f"Ajout de restaurant {nom.strip()}")
             st.sidebar.success(f"{nom} ajouté !")
             st.rerun()
+
 
 
 
