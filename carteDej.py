@@ -220,11 +220,41 @@ def fmt_note(note):
 def render_stars(note):
     if note is None:
         return ""
-    full = int(note)
-    half = 1 if note - full >= 0.5 else 0
-    empty = 5 - full - half
-    stars = "★" * full + "⯨" * half + "☆" * empty
-    return f"<span style='font-size:18px;color:#f2b01e;'>{stars}</span>"
+
+    full = int(note)               # full stars
+    half = 1 if (note - full) >= 0.5 else 0  # only one half star possible
+    empty = 5 - full - half        # remaining empty stars
+
+    html = ""
+
+    # Full stars
+    html += '<span style="color:gold;font-size:18px;">' + '★' * full + '</span>'
+
+    # Half star (left half gold, right half gray)
+    if half:
+        html += """
+        <span style="
+            display:inline-block;
+            position:relative;
+            font-size:18px;
+            color:gray;
+        ">
+            ★
+            <span style="
+                overflow:hidden;
+                position:absolute;
+                left:0;
+                width:50%;
+                color:gold;
+            ">★</span>
+        </span>
+        """
+
+    # Empty stars
+    html += '<span style="color:gray;font-size:18px;">' + '★' * empty + '</span>'
+
+    return html
+
 
 # Construire les marqueurs
 for _, row in df_affiche.iterrows():
@@ -367,6 +397,7 @@ if map_output and map_output.get("last_clicked"):
             save_csv_github(API_URL_CSV, df, message=f"Ajout de restaurant {nom.strip()}")
             st.sidebar.success(f"{nom} ajouté !")
             st.rerun()
+
 
 
 
