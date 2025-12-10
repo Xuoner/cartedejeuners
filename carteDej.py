@@ -99,7 +99,13 @@ iframe[title="st_folium_map"] {
 }
 </style>
 """, unsafe_allow_html=True)
-
+st.markdown("""
+<style>
+h1 {
+    margin-top: 20px;  /* adjust this value as needed */
+}
+</style>
+""", unsafe_allow_html=True)
 
 
 st.title("🍽️ Carte des Déjeuners")
@@ -424,6 +430,7 @@ if map_output and map_output.get("last_clicked"):
             save_csv_github(API_URL_CSV, df, message=f"Ajout de restaurant {nom.strip()}")
             st.sidebar.success(f"{nom} ajouté !")
             st.rerun()
+
 
 
 
