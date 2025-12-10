@@ -202,7 +202,7 @@ st.sidebar.markdown("---")
 # -----------------------------
 
 centre = [48.87114, 2.3357471708821524]
-m = folium.Map(location=centre, zoom_start=18, tiles="CartoDB positron")
+m = folium.Map(location=centre, zoom_start=17, tiles="CartoDB positron")
 
 # Ajouter le point "RSM 🏢"
 work_lat, work_lon = 48.87199, 2.33562
@@ -430,6 +430,7 @@ if map_output and map_output.get("last_clicked"):
             save_csv_github(API_URL_CSV, df, message=f"Ajout de restaurant {nom.strip()}")
             st.sidebar.success(f"{nom} ajouté !")
             st.rerun()
+
 
 
 
