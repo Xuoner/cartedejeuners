@@ -205,7 +205,7 @@ def get_emoji(type_cuisine: str) -> str:
     if "healthy" in t or "salad" in t or "vege" in t: return "🥗"
     if "asiat" in t or "chin" in t or "thai" in t: return "🍜"
     if "bar" in t or "pub" in t: return "🍺"
-    if "café" in t or "cafe" in t: return "☕"
+    if "café" in t or "cafe" in t or "coffee" in t : return "☕" 
     if "leban" in t or "liban" in t: return "🥙"
     if "fast food" in t or "kfc" in t or "mcdo" in t: return "🍟"
     return "🍽️"
@@ -397,6 +397,7 @@ if map_output and map_output.get("last_clicked"):
             save_csv_github(API_URL_CSV, df, message=f"Ajout de restaurant {nom.strip()}")
             st.sidebar.success(f"{nom} ajouté !")
             st.rerun()
+
 
 
 
