@@ -154,8 +154,9 @@ st.sidebar.markdown("---")
 # -----------------------------
 st.sidebar.header("✏️ Noter un restaurant")
 
-liste_restos = ["Aucun"] + df["nom"].tolist()
+liste_restos = ["Aucun"] + sorted(df["nom"].tolist(), key=lambda x: x.lower())
 choix_resto = st.sidebar.selectbox("Choisir un restaurant à noter", liste_restos)
+
 
 if choix_resto != "Aucun":
     resto_row = df[df["nom"] == choix_resto].iloc[0]
@@ -430,6 +431,7 @@ if map_output and map_output.get("last_clicked"):
             save_csv_github(API_URL_CSV, df, message=f"Ajout de restaurant {nom.strip()}")
             st.sidebar.success(f"{nom} ajouté !")
             st.rerun()
+
 
 
 
