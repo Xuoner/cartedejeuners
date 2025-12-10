@@ -76,30 +76,29 @@ for col in ["id", "nom", "lat", "lon", "type", "ratings", "comments"]:
 # Remplacer NaN par ""
 df = df.fillna("")
 
-st.markdown(
-    """
-    <style>
-    /* Remove padding/margin above main content */
-    .appview-container .main .block-container {
-        padding-top: 0rem !important;
-        margin-top: 0rem !important;
-    }
+st.markdown("""
+<style>
+/* main container padding */
+[data-testid="stMainBlockContainer"] {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
 
-    /* Remove extra spacing from title */
-    h1 {
-        margin-top: 0.2rem !important;
-        margin-bottom: 0.5rem !important;
-    }
+/* hide or shrink the Streamlit header bar */
+[data-testid="stAppViewContainer"] header {
+    height: 0;
+    padding: 0;
+    margin: 0;
+}
 
-    /* Optional: remove spacing around the map */
-    .stFrame {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+/* ensure iframe from st_folium starts at top */
+iframe[title="st_folium_map"] {
+    margin-top: 0 !important;
+    position: relative;
+    top: 0 !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
 
 
@@ -425,6 +424,7 @@ if map_output and map_output.get("last_clicked"):
             save_csv_github(API_URL_CSV, df, message=f"Ajout de restaurant {nom.strip()}")
             st.sidebar.success(f"{nom} ajouté !")
             st.rerun()
+
 
 
 
