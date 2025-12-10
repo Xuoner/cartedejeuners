@@ -1,5 +1,5 @@
 id,nom,lat,lon,type,ratings,comments
-43d65ef5-d2bd-462d-bd2d-a25c4e36a019,La Marina,48.87046040318273,2.3348951339721684,Japonais,"{""Paul"": 3.5, ""Juju"": 3, ""Seb"": 4.0}","{""Paul"": ""De bons sushis, rien de trop fancy""}"
+43d65ef5-d2bd-462d-bd2d-a25c4e36a019,La Marina,48.87046040318273,2.3348951339721684,Japonais,"{""Paul"": 3.5, ""Juju"": 3, ""Seb"": 4.0, ""Guy"": 4.5}","{""Paul"": ""De bons sushis, rien de trop fancy"", ""Guy"": ""Très bon japonais mais temps d'attente élevé""}"
 fd6e059f-3f8d-4a94-80a2-c0a76dadb054,Noodle Inn,48.87102231672272,2.3357453942298894,Chinois,"{""Guy"": 1}",
 19654e01-5b7b-4a76-9338-5506c64bb734,Hanoï Cà Phê,48.87143691136412,2.335715889930725,Asiatique,{},
 735c7e24-e0ae-4755-82fb-d2cf315a92d3,Le paradis du Fruit,48.87138927726087,2.335503995418549,Autre,"{""Juju"": 4, ""Seb"": 3.5}",{}
