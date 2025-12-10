@@ -129,7 +129,7 @@ if choix_resto != "Aucun":
     st.sidebar.write(f"**{resto_row['nom']}** — {resto_row['type']}")
     
     user_name = st.sidebar.text_input("Ton prénom (ou nom)", key="user_name")
-    note_user = st.sidebar.slider("Ta note (étoiles)", 1, 5, 4,step=0.5 key="note_user")
+    note_user = st.sidebar.slider("Ta note (étoiles)", 1, 5, 4,step=0.5, key="note_user")
     comment_user = st.sidebar.text_area("Ton commentaire (optionnel)", key="comment_user")
     
     if st.sidebar.button("Enregistrer ma note et mon commentaire"):
@@ -149,7 +149,7 @@ if choix_resto != "Aucun":
                 comments = {}
 
             # ajouter la note
-            ratings[user_name.strip()] = int(note_user)
+            ratings[user_name.strip()] = float(note_user)
             # ajouter le commentaire si renseigné
             if comment_user.strip():
                 comments[user_name.strip()] = comment_user.strip()
@@ -319,7 +319,7 @@ if map_output and map_output.get("last_clicked"):
     comment_new = ""
     if add_your_note:
         user_name_new = st.sidebar.text_input("Ton prénom (pour la note)", key="new_user_name")
-        user_note = st.sidebar.slider("Ta note (étoiles)", 1, 5, 4, key="new_user_note")
+        user_note = st.sidebar.slider("Ta note (étoiles)", 1, 5, 4, step = 0.5, key="new_user_note")
         comment_new = st.sidebar.text_area("Ton commentaire (optionnel)", key="new_user_comment")
 
     if st.sidebar.button("Ajouter à la carte", key="add_button"):
@@ -330,7 +330,7 @@ if map_output and map_output.get("last_clicked"):
             ratings_dict = {}
             comments_dict = {}
             if add_your_note and user_name_new.strip():
-                ratings_dict[user_name_new.strip()] = int(user_note)
+                ratings_dict[user_name_new.strip()] = float(user_note)
                 if comment_new.strip():
                     comments_dict[user_name_new.strip()] = comment_new.strip()
             new_row = {
@@ -347,4 +347,5 @@ if map_output and map_output.get("last_clicked"):
             save_csv_github(API_URL_CSV, df, message=f"Ajout de restaurant {nom.strip()}")
             st.sidebar.success(f"{nom} ajouté !")
             st.rerun()
+
 
