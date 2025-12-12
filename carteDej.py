@@ -21,6 +21,106 @@ CSV_PATH = "restaurants.csv"
 API_URL_CSV = f"https://api.github.com/repos/{REPO}/contents/{CSV_PATH}"
 HEADERS = {"Authorization": f"token {GITHUB_TOKEN}"}
 
+CUISINE_GROUPS = {
+    "Asiatique": [
+        # Generic
+        "asian", "asie", "asiat", "oriental", "asia",
+        # Chinese
+        "chinois", "chinese", "sichuan", "canton", "hong kong", "hk",
+        # Japanese
+        "jap", "japan", "japon", "ramen", "sushi", "udon", "donburi",
+        # Korean
+        "korean", "coré", "korea", "bibimbap", "kimchi", "bbq korean",
+        # Thai
+        "thai", "thailand", "pad thai",
+        # Vietnamese
+        "viet", "vietnam", "pho", "bahn mi", "saigon",
+        # Singapore / Malaysia
+        "singap", "malay", "malays", "laksa",
+        # Indonesian / Filipino
+        "indones", "bali", "nasi", "goreng", "filip", "pinoy",
+        # Noodles
+        "noodle", "noodles", "noodle bar",
+        # Fusion
+        "asian fusion", "fusion asiat"
+    ],
+
+    "Fast food": [
+        "fast", "quick", "kfc", "mcdo", "mcdon", "burger", "king", "bk",
+        "street food", "snack", "fried chicken", "fries", "frites",
+        "tacos", "wrap", "hot dog", "sandwich", "streetfood",
+        "wings", "fast-food", "fastfood"
+    ],
+
+    "Italien": [
+        "ital", "pizza", "pasta", "pâtes", "ristorante", "trattoria",
+        "gnocchi", "napoli", "napoli", "roma", "sicil", "tiramisu"
+    ],
+
+    "Français": [
+        "français", "bistro", "brasserie", "terroir", "traditionnel",
+        "gastronomique", "cuisine française", "rotisserie",
+        "rôtisserie", "crêperie", "creperie", "crêpe"
+    ],
+
+    "Libanais": [
+        "liban", "leban", "mezze", "shawarma", "kebab", "kabab",
+        "levant", "middle east", "middle-eastern", "mezzeh",
+        "tabbouleh", "houmous", "hummus"
+    ],
+
+    "Méditerranéen": [
+        "medit", "grec", "greek", "gyros", "turc", "turkish",
+        "mezze", "cypriot", "mediterranean"
+    ],
+
+    "Indien": [
+        "indien", "indian", "curry", "tandoori", "masala", "naan",
+        "punjab", "goa", "biryani", "dal", "bollywood"
+    ],
+
+    "Mexicain": [
+        "mexic", "mexican", "taco", "quesadilla", "burrito", "nachos",
+        "tex mex", "tex-mex"
+    ],
+
+    "Américain": [
+        "us", "américain", "american", "bbq", "grill", "steakhouse",
+        "new york", "nyc", "texas", "buffalo", "cheesecake",
+        "diner", "soul food"
+    ],
+
+    "Afrique": [
+        "afric", "afro", "ivoire", "ivory", "senegal", "ethiop",
+        "congo", "maghreb", "alger", "maroc", "morocco",
+        "couscous", "tajine", "tagine"
+    ],
+
+    "Healthy": [
+        "healthy", "vegan", "vege", "végé", "vegetar", "bio", "green",
+        "salad", "salade", "poke", "poke bowl", "bowl", "fresh"
+    ],
+
+    "Coffee": [
+        "coffee", "café", "cafe", "espresso", "latte", "roastery",
+        "roaster", "barista", "coffeebar"
+    ],
+
+    "Pâtisserie": [
+        "pâtisserie", "patisserie", "bakery", "boulangerie",
+        "cake", "cupcake", "viennoiserie", "dessert", "sweet"
+    ],
+
+    "Bar / Pub": [
+        "bar", "pub", "brasserie bar", "tapas", "beer", "bier",
+        "cocktail", "wine", "vin", "brew", "brewery"
+    ],
+
+    "Autre": []
+}
+
+
+
 st.set_page_config(page_title="🍽️ Carte des Restos", layout="wide")
 
 # -----------------------------
@@ -62,7 +162,15 @@ def save_csv_github(api_url, df, message="Update CSV"):
         st.success("✅ CSV mis à jour sur GitHub")
     else:
         st.error(f"Erreur GitHub: {put_resp.status_code} {put_resp.text}")
-
+def canonical_type(raw: str) -> str:
+    if not isinstance(raw, str):
+        return "Autre"
+    t = raw.lower()
+    for cat, keywords in CUISINE_GROUPS.items():
+        for kw in keywords:
+            if kw in t:
+                return cat
+    return "Autre"
 # -----------------------------
 # Chargement / initialisation du CSV depuis GitHub
 # -----------------------------
@@ -116,13 +224,17 @@ st.title("🍽️ Carte des Déjeuners")
 st.sidebar.header("🔍 Filtres & Actions")
 
 # Filtre par type
-types_dispo = ["Tous"] + sorted([t for t in df["type"].unique() if t])
+# 1. Normalize all types temporarily
+df["normalized_type"] = df["type"].apply(canonical_type)
+
+types_dispo = ["Tous"] + sorted(df["normalized_type"].unique())
 type_filtre = st.sidebar.selectbox("Type de cuisine", types_dispo)
 
 if type_filtre != "Tous":
-    df_affiche = df[df["type"] == type_filtre].copy()
+    df_affiche = df[df["normalized_type"] == type_filtre].copy()
 else:
     df_affiche = df.copy()
+
 
 # Bouton déjeuner aléatoire (prend les restos ayant au moins une note)
 if st.sidebar.button("🎲 Choisis mon déjeuner !"):
@@ -431,6 +543,7 @@ if map_output and map_output.get("last_clicked"):
             save_csv_github(API_URL_CSV, df, message=f"Ajout de restaurant {nom.strip()}")
             st.sidebar.success(f"{nom} ajouté !")
             st.rerun()
+
 
 
 
