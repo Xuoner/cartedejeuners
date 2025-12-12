@@ -1,23 +1,24 @@
-id,nom,lat,lon,type,ratings,comments
-43d65ef5-d2bd-462d-bd2d-a25c4e36a019,La Marina,48.87046040318273,2.3348951339721684,Japonais,"{""Paul"": 3.5, ""Seb"": 4.0, ""Guy"": 4.5, ""Juju"": 3.0}","{""Paul"": ""De bons sushis, rien de trop fancy"", ""Guy"": ""Très bon japonais mais temps d'attente élevé"", ""Juju"": ""Bon. Pas copieux""}"
-fd6e059f-3f8d-4a94-80a2-c0a76dadb054,Noodle Inn,48.87102231672272,2.3357453942298894,Chinois,"{""Guy"": 1, ""JulienF"": 1.0}","{""JulienF"": ""cher et fade""}"
-19654e01-5b7b-4a76-9338-5506c64bb734,Hanoï Cà Phê,48.87143691136412,2.335715889930725,Asiatique,{},
-735c7e24-e0ae-4755-82fb-d2cf315a92d3,Le paradis du Fruit,48.87138927726087,2.335503995418549,Autre,"{""Seb"": 3.5, ""Juju"": 3.5}","{""Juju"": ""Bon mais cher. Pour les occasions""}"
-1a585f4c-5e6c-4bd5-b34a-787bc67d038f,Burger King,48.87134164311225,2.335077524185181,Fast food,{},
-3d1751dd-edc4-4283-ba75-eb54fcae3e22,Mc Donalds,48.87135575693878,2.335305511951447,Fast Food,{},
-612e87c1-cd64-4644-b9bb-09486c8b8bd7,Quick,48.87096233253266,2.3354476690292363,Fast Food,{},
-d0f58202-2e66-4df2-8f1e-af74580e3d70,Noura,48.87092351919492,2.3351177573204045,Libanais,{},
-be6f7409-a1c0-4059-b6ed-76b41427f9e2,Il Timo,48.86927921741169,2.335579097270966,Italien,"{""Paul"": 1, ""Zainab"": 1, ""Ornelly"": 1, ""Seb"": 3.5, ""Guy"": 4.0, ""Oumi"": 3.5, ""Juju"": 1.0}","{""Seb"": ""Tortellini Ricotta Épinard OK"", ""Guy"": ""Très bon rapport qualité-prix et rapide à servir. Seul restaurant a proproser une carte de fidélité"", ""Oumi"": ""Ca va c'est ok\nCommande :\nPates bolognaises"", ""Juju"": ""A éviter""}"
-1df1899b-3ff7-46fd-9b29-865dae3d963a,Bolo Bolo,48.86896693510897,2.337148189544678,Chinois,"{""Paul"": 4, ""Guy"": 5.0, ""Oumi"": 4.5, ""Juju"": 3.0}","{""Guy"": ""Excellent restaurant traditionnel hong kongais"", ""Oumi"": ""Très bon !\nCommande :\nChowfun végé et Poulet aigre doux dans les snacks"", ""Juju"": ""Bon et copieux mais pas transcendant""}"
-eefbc427-7ae1-40cd-adb9-2723379d1749,Fuchill,48.86999375433189,2.3405358195304875,Chinois/Noodles,"{""Paul"": 4, ""Zainab"":5}",
-181afcbd-f277-4da0-811a-4dc83404adfa,Isshin Ramen,48.870537148418215,2.3429632186889653,Japonais,{},
-d877c625-784d-431c-b3e8-16a6045d58fa,Little Seoul,48.86769280736858,2.3353275962311617,Coréen,"{""Seb"": 4.0, ""Guy"": 4.0, ""Juju"": 4.0}","{""Seb"": ""Petites portions"", ""Juju"": ""Très bon mais pas copieux""}"
-357988f8-3314-4c0a-836c-389cfbf39986,Kurry Up,48.868419995306645,2.3358392715454106,Indien,"{""Paul"": 3.0, ""Guy"": 3.5, ""Juju"": 3.0}","{""Paul"": ""Salad bowl mais indien, bon mais sans plus"", ""Guy"": ""Bon mais un peu cher"", ""Juju"": ""Mouais""}"
-bdb2888f-7761-499a-ab74-f26380b1ec49,Mister Garden,48.86883284719448,2.336799502372742,Salade,"{""Juju"": 5.0}","{""Juju"": ""Indémodable""}"
-f7efd00f-0314-441c-a539-237eb4770743,Dunkin',48.87166626011537,2.340677976608277,Coffee Shop,"{""Paul"": 3.5}","{""Paul"": ""Très sucré + un peu cher mais pas mal de choix originaux""}"
-f69e5685-6dc2-4649-8500-f1d121549780,Good News,48.86997258301425,2.3350882530212407,Coffee Shop,"{""Paul"": 3.5}","{""Paul"": ""Pour les nostalgiques du 26...""}"
-dae38bb2-cf7c-4c57-b04e-d184076e22af,Noir,48.868813439703416,2.3365661501884465,Coffee Shop,"{""Paul"": 4.0}","{""Paul"": ""Des choix de cafés simples (pas de sirop etc...) mais bon !""}"
-fcd89690-4cf3-43f5-9db7-aa025143824c,Moö,48.869942590298976,2.3352290689945225,Asiatique,"{""Seb"": 4.5}","{""Seb"": ""Bonnes portions""}"
-a82b20cc-72d7-45f8-8f78-b3eca7619c63,Mangez et Cassez vous,48.87415021615664,2.3351633548736577,Burger,"{""Olivier"": 3.5}","{""Olivier"": ""Note prenant en compte rapport qualité/prix mais attente très longue, il faut bien choisir son heure.)""}"
-936feded-11dd-43cc-bc65-e1b535e88483,F*cking Good,48.8680953572418,2.335774898529053,Burger,"{""Guy"": 4.0}","{""Guy"": ""Bon burger et excellentes frites. Ils sont un peu lent néanmoins.""}"
-b6f0299c-5e54-4157-a06a-d097f9f4b762,Mezzencore,48.87137692767112,2.342469692230225,Libanais,"{""Juju"": 4.0, ""Guy"": 4.0}","{""Juju"": ""Pita""}"
+id,nom,lat,lon,type,ratings,comments,normalized_type
+43d65ef5-d2bd-462d-bd2d-a25c4e36a019,La Marina,48.87046040318273,2.3348951339721684,Japonais,"{""Paul"": 3.5, ""Seb"": 4.0, ""Guy"": 4.5, ""Juju"": 3.0}","{""Paul"": ""De bons sushis, rien de trop fancy"", ""Guy"": ""Très bon japonais mais temps d'attente élevé"", ""Juju"": ""Bon. Pas copieux""}",Asiatique
+fd6e059f-3f8d-4a94-80a2-c0a76dadb054,Noodle Inn,48.87102231672272,2.3357453942298894,Chinois,"{""Guy"": 1, ""JulienF"": 1.0}","{""JulienF"": ""cher et fade""}",Asiatique
+19654e01-5b7b-4a76-9338-5506c64bb734,Hanoï Cà Phê,48.87143691136412,2.335715889930725,Asiatique,{},,Asiatique
+735c7e24-e0ae-4755-82fb-d2cf315a92d3,Le paradis du Fruit,48.87138927726087,2.335503995418549,Autre,"{""Seb"": 3.5, ""Juju"": 3.5}","{""Juju"": ""Bon mais cher. Pour les occasions""}",Autre
+1a585f4c-5e6c-4bd5-b34a-787bc67d038f,Burger King,48.87134164311225,2.335077524185181,Fast food,{},,Fast food
+3d1751dd-edc4-4283-ba75-eb54fcae3e22,Mc Donalds,48.87135575693878,2.335305511951447,Fast Food,{},,Fast food
+612e87c1-cd64-4644-b9bb-09486c8b8bd7,Quick,48.87096233253266,2.3354476690292363,Fast Food,{},,Fast food
+d0f58202-2e66-4df2-8f1e-af74580e3d70,Noura,48.87092351919492,2.3351177573204045,Libanais,{},,Libanais
+be6f7409-a1c0-4059-b6ed-76b41427f9e2,Il Timo,48.86927921741169,2.335579097270966,Italien,"{""Paul"": 1, ""Zainab"": 1, ""Ornelly"": 1, ""Seb"": 3.5, ""Guy"": 4.0, ""Oumi"": 3.5, ""Juju"": 1.0}","{""Seb"": ""Tortellini Ricotta Épinard OK"", ""Guy"": ""Très bon rapport qualité-prix et rapide à servir. Seul restaurant a proproser une carte de fidélité"", ""Oumi"": ""Ca va c'est ok\nCommande :\nPates bolognaises"", ""Juju"": ""A éviter""}",Italien
+1df1899b-3ff7-46fd-9b29-865dae3d963a,Bolo Bolo,48.86896693510897,2.337148189544678,Chinois,"{""Paul"": 4, ""Guy"": 5.0, ""Oumi"": 4.5, ""Juju"": 3.0}","{""Guy"": ""Excellent restaurant traditionnel hong kongais"", ""Oumi"": ""Très bon !\nCommande :\nChowfun végé et Poulet aigre doux dans les snacks"", ""Juju"": ""Bon et copieux mais pas transcendant""}",Asiatique
+eefbc427-7ae1-40cd-adb9-2723379d1749,Fuchill,48.86999375433189,2.3405358195304875,Chinois/Noodles,"{""Paul"": 4, ""Zainab"":5}",,Asiatique
+181afcbd-f277-4da0-811a-4dc83404adfa,Isshin Ramen,48.870537148418215,2.3429632186889653,Japonais,{},,Asiatique
+d877c625-784d-431c-b3e8-16a6045d58fa,Little Seoul,48.86769280736858,2.3353275962311617,Coréen,"{""Seb"": 4.0, ""Guy"": 4.0, ""Juju"": 4.0}","{""Seb"": ""Petites portions"", ""Juju"": ""Très bon mais pas copieux""}",Asiatique
+357988f8-3314-4c0a-836c-389cfbf39986,Kurry Up,48.868419995306645,2.3358392715454106,Indien,"{""Paul"": 3.0, ""Guy"": 3.5, ""Juju"": 3.0}","{""Paul"": ""Salad bowl mais indien, bon mais sans plus"", ""Guy"": ""Bon mais un peu cher"", ""Juju"": ""Mouais""}",Indien
+bdb2888f-7761-499a-ab74-f26380b1ec49,Mister Garden,48.86883284719448,2.336799502372742,Salade,"{""Juju"": 5.0}","{""Juju"": ""Indémodable""}",Healthy
+f7efd00f-0314-441c-a539-237eb4770743,Dunkin',48.87166626011537,2.340677976608277,Coffee Shop,"{""Paul"": 3.5}","{""Paul"": ""Très sucré + un peu cher mais pas mal de choix originaux""}",Coffee
+f69e5685-6dc2-4649-8500-f1d121549780,Good News,48.86997258301425,2.3350882530212407,Coffee Shop,"{""Paul"": 3.5}","{""Paul"": ""Pour les nostalgiques du 26...""}",Coffee
+dae38bb2-cf7c-4c57-b04e-d184076e22af,Noir,48.868813439703416,2.3365661501884465,Coffee Shop,"{""Paul"": 4.0}","{""Paul"": ""Des choix de cafés simples (pas de sirop etc...) mais bon !""}",Coffee
+fcd89690-4cf3-43f5-9db7-aa025143824c,Moö,48.869942590298976,2.3352290689945225,Asiatique,"{""Seb"": 4.5}","{""Seb"": ""Bonnes portions""}",Asiatique
+a82b20cc-72d7-45f8-8f78-b3eca7619c63,Mangez et Cassez vous,48.87415021615664,2.3351633548736577,Burger,"{""Olivier"": 3.5}","{""Olivier"": ""Note prenant en compte rapport qualité/prix mais attente très longue, il faut bien choisir son heure.)""}",Fast food
+936feded-11dd-43cc-bc65-e1b535e88483,F*cking Good,48.8680953572418,2.335774898529053,Burger,"{""Guy"": 4.0}","{""Guy"": ""Bon burger et excellentes frites. Ils sont un peu lent néanmoins.""}",Fast food
+b6f0299c-5e54-4157-a06a-d097f9f4b762,Mezzencore,48.87137692767112,2.342469692230225,Libanais,"{""Juju"": 4.0, ""Guy"": 4.0}","{""Juju"": ""Pita""}",Libanais
+f5ba130a-3518-4754-8389-46bb1048dcf0,BOKAN,48.87069240278753,2.3412385582923894,Japonaist,"{""Zainab"": 4.0}","{""Zainab"": ""Rapport qualité-prix toléré. Sushis de bonne qualité. Menu midi bon.""}",
